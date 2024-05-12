@@ -8,6 +8,7 @@ Pablo Groisman, Nicolás Yanovsky, Nicolás Rozenberg
 ## Introducción
 
 Los trastornos neuropsiquiátricos, como el Trastorno por Déficit de Atención e Hiperactividad (TDAH), el Trastorno Bipolar (TB) y la Esquizofrenia, representan una carga significativa para la salud pública en todo el mundo debido a su impacto en el funcionamiento cognitivo, emocional y social de los individuos afectados. Estos trastornos son complejos y multifacéticos, lo que dificulta su diagnóstico y tratamiento efectivo.
+
 En este estudio, inspirado en ideas de un trabajo similar [^1] , nos proponemos explorar si es plausible distinguir  entre sujetos de control y aquellos diagnosticados con TDAH, Trastorno Bipolar y Esquizofrenia con técnicas de aprendizaje automático utilizando features de conectividad funcional, y Amplitud de Fluctuaciones de Baja Frecuencia (conocido como ALFF, acrónimo de Amplitude of Low Frequency Fluctuations) extraídas de señales BOLD (Blood Oxygenation Level Dependent) tomadas mediante fMRI. Se han realizado trabajos intentando relacionar la conectividad funcional con estas patologías [^2] [^3].  Además, se han hecho estudios con los mismos propósitos, utilizando el marcador ALFF, que por ejemplo puede estar correlacionado con patologías como esquizofrenia o AHDH, especialmente para estado en reposo [^4] [^5].
 
 
@@ -15,13 +16,17 @@ En este estudio, inspirado en ideas de un trabajo similar [^1] , nos proponemos 
 
 ### Datos
 Los datos son extraídos de la fuente de datos pública UCLA Consortium for Neuropsychiatric Phenomics LA5c Study (Poldrack et al., 2020)[^6], disponible en el sitio OpenNeuro, en formato BIDS (Brain Imaging Data Structure).
+
 La muestra está compuesta por 272 sujetos, con edades del rango de entre 21 y 50 años, de los cuales 130 son sujetos de control y 142 son sujetos con trastornos neuropsiquiátricos. 50 fueron diagnosticados con esquizofrenia, 49 con trastorno bipolar y 43 con TDAH. Contiene imágenes cerebrales, entre ellas de señales BOLD de fMRI para cada sujeto en cada tarea, como también información demográfica. Cada sujeto fue sometido a diversas tareas, entre ellas un período de reposo de 304 segundos, y tareas de memoria y de atención.
+
 Además, se encuentran disponibles las imágenes preprocesadas. Se encuentran disponibles n=265 sujetos con datos preprocesados, ya que a siete les faltaba el scan de T1-w. Entre las transformaciones que se realizaron, se aplicó la transformación del volumen de T1-w al espacio de MNI152 y se realizó corrección de movimientos a las imágenes de fMRI funcional.
 
 ### Extracción de features
 
 En primer lugar, separamos un 20% de los sujetos de manera equitativa que luego utilizaremos al final para validar los modelos que obtengamos y continuamos el procesamiento de los datos con el otro 80% de los sujetos, correspondientes a las señales BOLD en reposo.
+
 En segundo lugar resulta necesario aclarar que utilizamos la herramienta Open Source Junifer[^7], una herramienta end-to-end para proyectos de aprendizaje automático aplicados a neurociencia, para la obtención y transformación de los datos, y luego aplicar modelos aprendizaje automático. A partir de las imágenes de fMRI preprocesadas provistas por el dataset, parcelamos el cerebro de acuerdo a Schaefer et al., 2018. [^8]
+
 A partir de acá tomaremos dos enfoques distintos para probar los modelos. En ambos casos haremos confound removal. Para el primero, calcularemos la conectividad funcional entre las regiones obteniendo así una matriz de 100*100. Para el segundo utilizaremos como features al ALFF de cada parcela.
 
 
@@ -30,9 +35,12 @@ A partir de acá tomaremos dos enfoques distintos para probar los modelos. En am
 
 Utilizando el enfoque de conectividad funcional, primero armamos la matriz de features poniendo en cada fila el vector conseguido producto de desenrollar la matriz triangular superior de conectividad funcional de cada sujeto. Al ser 100 regiones de interés, terminamos con una matriz de $N\times\frac{100^2}{2}$. 
 Teniendo en cuenta que $N << \frac{100^2}{2}$ y los problemas asociados que trae esto, decidimos usar PCA para reducir las dimensiones del problema.
+
 Probamos distintos clasificadores (Random Forest, LDA, SVM, XGBoost) y realizamos repeated (10 veces) Nested Cross Validation para estimar el error de generalización de la selección del modelo final con cross-validation en conjunto con grid search (5-fold, estratificado). Para SVM realizamos el proceso de selección de hiperparámetros para cada tipo de kernel (lineal, polinomial, rbf). A lo largo del proceso la métrica de evaluación usada siempre es el AUC-ROC. 
+
 El modelo final seleccionado será el que mayor AUC obtuvo, pero teniendo en cuenta la consistencia de los resultados del repeated nested cross-validation. 
 Finalmente reportamos su performance estimada en el set de testeo previamente separado.
+
 Por último, repetiremos el proceso desde aplicar PCA hasta obtener métricas utilizando como features al ALFF de cada parcela.
 
 
