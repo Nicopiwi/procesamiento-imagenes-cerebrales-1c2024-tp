@@ -1,4 +1,4 @@
-# Detección de sujetos con desórdenes neuropsiquiátricos usando marcadores extraídos de fMRI funcional en estado de reposo y Aprendizaje Automático
+# Detección de sujetos con desórdenes neuropsiquiátricos usando marcadores extraídos de fMRI en estado de reposo y Aprendizaje Automático
 
 
 --------------
