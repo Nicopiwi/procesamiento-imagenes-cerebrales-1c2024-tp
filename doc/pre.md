@@ -41,7 +41,7 @@ Probamos distintos clasificadores (Random Forest, LDA, SVM, XGBoost) y realizamo
 El modelo final seleccionado será el que mayor AUC obtuvo, pero teniendo en cuenta la consistencia de los resultados del repeated nested cross-validation. 
 Finalmente reportamos su performance estimada en el set de testeo previamente separado.
 
-Por último, repetiremos el proceso desde aplicar PCA hasta obtener métricas utilizando como features al ALFF de cada parcela.
+Por último, repetiremos el proceso desde aplicar PCA hasta obtener métricas utilizando como features el marcador ALFF de cada parcela.
 
 
 [^1]: Extraído de https://school.brainhackmtl.org/project/brotherwood_connectivity/
