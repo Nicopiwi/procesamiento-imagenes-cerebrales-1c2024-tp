@@ -25,7 +25,7 @@ Además, se encuentran disponibles las imágenes preprocesadas. Se encuentran di
 
 En primer lugar, separamos un 20% de los sujetos de manera equitativa que luego utilizaremos al final para validar los modelos que obtengamos y continuamos el procesamiento de los datos con el otro 80% de los sujetos, correspondientes a las señales BOLD en reposo.
 
-En segundo lugar resulta necesario aclarar que utilizamos la herramienta Open Source Junifer[^7], una herramienta end-to-end para proyectos de aprendizaje automático aplicados a neurociencia, para la obtención y transformación de los datos, y luego aplicar modelos aprendizaje automático. A partir de las imágenes de fMRI preprocesadas provistas por el dataset, parcelamos el cerebro de acuerdo a Schaefer et al., 2018. [^8]
+En segundo lugar resulta necesario aclarar que utilizamos la herramienta Open Source Junifer[^7], una herramienta end-to-end para proyectos de aprendizaje automático aplicados a neuroimágenes, para la obtención y transformación de los datos, y luego aplicar modelos aprendizaje automático. A partir de las imágenes de fMRI preprocesadas provistas por el dataset, parcelamos el cerebro de acuerdo a Schaefer et al., 2018. [^8]
 
 A partir de acá tomaremos dos enfoques distintos para probar los modelos. En ambos casos haremos confound removal. Para el primero, calcularemos la conectividad funcional entre las regiones obteniendo así una matriz de 100*100. Para el segundo utilizaremos como features al ALFF de cada parcela.
 
