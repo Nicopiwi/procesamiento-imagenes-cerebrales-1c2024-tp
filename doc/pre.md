@@ -19,7 +19,7 @@ Los datos son extraídos de la fuente de datos pública UCLA Consortium for Neur
 
 La muestra está compuesta por 272 sujetos, con edades del rango de entre 21 y 50 años, de los cuales 130 son sujetos de control y 142 son sujetos con trastornos neuropsiquiátricos. 50 fueron diagnosticados con esquizofrenia, 49 con trastorno bipolar y 43 con TDAH. Contiene imágenes cerebrales, entre ellas de señales BOLD de fMRI para cada sujeto en cada tarea, como también información demográfica. Cada sujeto fue sometido a diversas tareas, entre ellas un período de reposo de 304 segundos, y tareas de memoria y de atención.
 
-Además, se encuentran disponibles las imágenes preprocesadas. Se encuentran disponibles n=265 sujetos con datos preprocesados, ya que a siete les faltaba el scan de T1-w. Entre las transformaciones que se realizaron, se aplicó la transformación del volumen de T1-w al espacio de MNI152 y se realizó corrección de movimientos a las imágenes de fMRI.
+Además, se encuentran disponibles las imágenes preprocesadas. Se encuentran disponibles n=265 sujetos con datos preprocesados, ya que a siete les faltaba el scan de T1-w. Entre las transformaciones que se realizaron, se aplicó la transformación del volumen de T1-w al espacio de MNI152, y se realizó la corrección de movimientos y la alineación con el T1-w a las imágenes de fMRI.
 
 ### Extracción de features
 
