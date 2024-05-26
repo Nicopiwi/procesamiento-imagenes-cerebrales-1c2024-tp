@@ -1,0 +1,38 @@
+workdir: /tmp
+
+datagrabber:
+  kind: PatternDataladDataGrabber
+  uri: https://github.com/OpenNeuroDatasets/ds000030.git
+  patterns:
+    BOLD:
+      pattern: "{subject}/func/{subject}_task-rest_bold.nii.gz"
+      space: MNI152NLin2009cAsym
+
+  replacements:
+    - subject
+  types:
+    - BOLD
+
+markers:
+  - name: parccortical-Schaefer100x17
+    kind: FunctionalConnectivityParcels
+    parcellation: 
+      - SUITxSUIT
+    cor_method: correlation
+    cor_method_params:
+      empirical: true
+    masks: 
+      - inherit
+
+  - name: ALFF_parccortical-Schaefer100x17
+    kind: ALFFParcels
+    fractional: true
+    using: junifer
+    parcellation: 
+      - SUITxSUIT
+    masks: 
+      - inherit
+
+storage:
+  kind: SQLiteFeatureStorage
+  uri: testing.sqlite

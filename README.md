@@ -3,3 +3,10 @@
 ## Integrantes 
 
 Pablo Groisman, Nicolás Yanovsky, Nicolás Rozenberg
+
+
+# Reproducción
+
+Instalar ANTs
+
+conda install aramislab::ants
