@@ -17,7 +17,7 @@ markers:
   - name: parccortical-Schaefer100x17
     kind: FunctionalConnectivityParcels
     parcellation: 
-      - SUITxSUIT
+      - Schaefer100x17
     cor_method: correlation
     cor_method_params:
       empirical: true
@@ -29,10 +29,11 @@ markers:
     fractional: true
     using: junifer
     parcellation: 
-      - SUITxSUIT
+      - Schaefer100x7
     masks: 
       - inherit
 
 storage:
   kind: SQLiteFeatureStorage
   uri: testing.sqlite
+
