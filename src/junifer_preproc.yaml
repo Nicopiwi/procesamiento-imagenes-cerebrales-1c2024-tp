@@ -1,6 +1,5 @@
 workdir: /tmp
 
-
 datagrabber:
   kind: PatternDataladDataGrabber
   uri: https://github.com/OpenNeuroDatasets/ds000030.git
@@ -31,5 +30,14 @@ markers:
       - Schaefer100x7
 
 storage:
-  kind: SQLiteFeatureStorage
-  uri: ./test.sqlite
+  kind: HDF5FeatureStorage
+  uri: ./test.hdf5
+
+# queue:
+#   jobname: FEATURE_EXTRACTION
+#   kind: HTCondor
+#   env:
+#     kind: conda
+#     name: neurodc
+#   mem: 8G
+#   collect: "yes"
