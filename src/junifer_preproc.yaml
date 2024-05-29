@@ -15,15 +15,13 @@ datagrabber:
 
 
 markers:
-  # - name: parccortical-Schaefer100x17
-  #   kind: FunctionalConnectivityParcels
-  #   parcellation: 
-  #     - Schaefer100x17
-  #   cor_method: correlation
-  #   cor_method_params:
-  #     empirical: true
-  #   masks: 
-  #     - compute_epi_mask
+  - name: parccortical-Schaefer100x17
+    kind: FunctionalConnectivityParcels
+    parcellation: 
+      - Schaefer100x17
+    cor_method: correlation
+    cor_method_params:
+      empirical: true
 
   - name: ALFF_parccortical-Schaefer100x17
     kind: ALFFParcels
@@ -35,4 +33,3 @@ markers:
 storage:
   kind: SQLiteFeatureStorage
   uri: ./test.sqlite
-
