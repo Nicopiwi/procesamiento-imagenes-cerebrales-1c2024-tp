@@ -1,4 +1,2 @@
-**/*.sqlite
-**/*.hdf5
 .vscode/
 **/junifer_jobs
