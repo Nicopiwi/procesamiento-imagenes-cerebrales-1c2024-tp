@@ -25,7 +25,7 @@ Además, se encuentran disponibles las imágenes preprocesadas. Se encuentran di
 
 En primer lugar, separamos un 20% de los sujetos de manera equitativa que luego utilizaremos al final para validar los modelos que obtengamos y continuamos el procesamiento de los datos con el otro 80% de los sujetos, correspondientes a las señales BOLD en reposo.
 
-En segundo lugar resulta necesario aclarar que utilizamos la herramienta Open Source Junifer[^7], una herramienta end-to-end para proyectos de aprendizaje automático aplicados a neuroimágenes, para la obtención y transformación de los datos, y luego aplicar modelos aprendizaje automático. A partir de las imágenes de fMRI preprocesadas provistas por el dataset, parcelamos el cerebro de acuerdo a Schaefer et al., 2018. [^8]
+En segundo lugar resulta necesario aclarar que utilizamos la herramienta Open Source Junifer[^7], una herramienta end-to-end para proyectos de aprendizaje automático aplicados a neuroimágenes, para la obtención y transformación de los datos, y luego aplicar modelos aprendizaje automático. A partir de las imágenes de fMRI preprocesadas provistas por el dataset, parcelamos el cerebro de acuerdo a Tian et al., 2020. [^8]
 
 A partir de acá tomaremos dos enfoques distintos para probar los modelos. En ambos casos haremos confound removal. Para el primero, calcularemos la conectividad funcional entre las regiones obteniendo así una matriz de 100*100. Para el segundo utilizaremos como features al ALFF de cada parcela.
 
@@ -33,8 +33,8 @@ A partir de acá tomaremos dos enfoques distintos para probar los modelos. En am
 
 ### ML Pipeline
 
-Utilizando el enfoque de conectividad funcional, primero armamos la matriz de features poniendo en cada fila el vector conseguido producto de desenrollar la matriz triangular superior de conectividad funcional de cada sujeto. Al ser 100 regiones de interés, terminamos con una matriz de $N\times\frac{100^2}{2}$. 
-Teniendo en cuenta que $N << \frac{100^2}{2}$ y los problemas asociados que trae esto, decidimos usar PCA para reducir las dimensiones del problema.
+Utilizando el enfoque de conectividad funcional, primero armamos la matriz de features poniendo en cada fila el vector conseguido producto de desenrollar la matriz triangular superior de conectividad funcional de cada sujeto. Al ser 100 regiones de interés, terminamos con una matriz de $N\times\frac{50^2}{2}$. 
+Teniendo en cuenta que $N << \frac{50^2}{2}$ y los problemas asociados que trae esto, decidimos usar PCA para reducir las dimensiones del problema.
 
 Probamos distintos clasificadores (Random Forest, LDA, SVM, XGBoost) y realizamos repeated (10 veces) Nested Cross Validation para estimar el error de generalización de la selección del modelo final con cross-validation en conjunto con grid search (5-fold, estratificado). Para SVM realizamos el proceso de selección de hiperparámetros para cada tipo de kernel (lineal, polinomial, rbf). A lo largo del proceso la métrica de evaluación usada siempre es el AUC-ROC. 
 
@@ -51,4 +51,8 @@ Por último, repetiremos el proceso desde aplicar PCA hasta obtener métricas ut
 [^5]: Zang YF, He Y, Zhu CZ, Cao QJ, Sui MQ, Liang M, Tian LX, Jiang TZ, Wang YF. Altered baseline brain activity in children with ADHD revealed by resting-state functional MRI. Brain Dev. 2007 Mar;29(2):83-91. doi: 10.1016/j.braindev.2006.07.002. Epub 2006 Aug 17. Erratum in: Brain Dev. 2012 Apr;34(4):336. PMID: 16919409.
 [^6]: Bilder, R and Poldrack, R and Cannon, T and London, E and Freimer, N and Congdon, E and Karlsgodt, K and Sabb, F (2020). UCLA Consortium for Neuropsychiatric Phenomics LA5c Study. OpenNeuro. [Dataset] doi: 10.18112/openneuro.ds000030.v1.0.0. **Para más información sobre la extracción y preprocesado de los datos, consultar en https://f1000research.com/articles/6-1262/v2**
 [^7]: El repositorio se encuentra en https://github.com/juaml/junifer. Desarrollado y mantenido por el grupo de Machine Learning Aplicado del Forschungszentrum Juelich.
-[^8]: Schaefer et al. Local-Global Parcellation of the Human Cerebral Cortex from Intrinsic Functional Connectivity MRI (2018): Ver https://pubmed.ncbi.nlm.nih.gov/28981612/
+[^8]: Tian, Y., Margulies, D.S., Breakspear, M. et al.
+Topographic organization of the human subcortex
+unveiled with functional connectivity gradients.
+Nature Neuroscience, Volume 23, Pages 1421–1432 (2020).
+https://doi.org/10.1038/s41593-020-00711-6

@@ -1,14 +1,14 @@
 workdir: /tmp
 
 datagrabber:
-  kind: PatternDataladDataGrabber
-  uri: https://github.com/OpenNeuroDatasets/ds000030.git
+  kind: BaseDataGrabber
+  datadir: "../"
   patterns:
     BOLD:
-      pattern: "{subject}/func/{subject}_task-rest_bold.nii.gz"
+      pattern: "sub-10159_task-rest_bold.nii.gz"
       space: MNI152NLin6Asym
   replacements:
-    - subject
+  #   - subject
   types:
     - BOLD
 
@@ -31,7 +31,7 @@ markers:
 
 storage:
   kind: HDF5FeatureStorage
-  uri: ./test.hdf5
+  uri: ./test-2.hdf5
 
 # queue:
 #   jobname: FEATURE_EXTRACTION
