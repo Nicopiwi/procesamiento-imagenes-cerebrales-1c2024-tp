@@ -15,21 +15,37 @@ datagrabber:
 
 
 markers:
-  - name: parccortical-Schaefer100x17
+  - name: parccortical-TianxS3x3TxMNI6thgeneration
     kind: FunctionalConnectivityParcels
     parcellation: 
-      - Schaefer100x17
+      - TianxS3x3TxMNI6thgeneration
     cor_method: correlation
     cor_method_params:
       empirical: true
+    masks:
+    - compute_brain_mask:
+        threshold: 0.5
 
-  - name: ALFF_parccortical-Schaefer100x17
+
+  - name: ALFF_parccortical-TianxS3x3TxMNI6thgeneration
     kind: ALFFParcels
     fractional: true
     using: junifer
     parcellation: 
-      - Schaefer100x7
+      - TianxS3x3TxMNI6thgeneration
+    masks:
+    - compute_brain_mask:
+        threshold: 0.5
 
 storage:
-  kind: SQLiteFeatureStorage
-  uri: ./test.sqlite
+  kind: HDF5FeatureStorage
+  uri: ./test.hdf5
+
+#queue:
+#  jobname: FEATURE_EXTRACTION
+#  kind: HTCondor
+#  env:
+#    kind: conda
+#    name: neurodc
+#  mem: 8G
+#  collect: "yes"
