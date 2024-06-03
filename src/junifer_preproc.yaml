@@ -1,0 +1,51 @@
+workdir: /tmp
+
+
+datagrabber:
+  kind: PatternDataladDataGrabber
+  uri: https://github.com/OpenNeuroDatasets/ds000030.git
+  patterns:
+    BOLD:
+      pattern: "{subject}/func/{subject}_task-rest_bold.nii.gz"
+      space: MNI152NLin6Asym
+  replacements:
+    - subject
+  types:
+    - BOLD
+
+
+markers:
+  - name: parccortical-TianxS3x3TxMNI6thgeneration
+    kind: FunctionalConnectivityParcels
+    parcellation: 
+      - TianxS3x3TxMNI6thgeneration
+    cor_method: correlation
+    cor_method_params:
+      empirical: true
+    masks:
+    - compute_brain_mask:
+        threshold: 0.5
+
+
+  - name: ALFF_parccortical-TianxS3x3TxMNI6thgeneration
+    kind: ALFFParcels
+    fractional: true
+    using: junifer
+    parcellation: 
+      - TianxS3x3TxMNI6thgeneration
+    masks:
+    - compute_brain_mask:
+        threshold: 0.5
+
+storage:
+  kind: HDF5FeatureStorage
+  uri: ./test.hdf5
+
+#queue:
+#  jobname: FEATURE_EXTRACTION
+#  kind: HTCondor
+#  env:
+#    kind: conda
+#    name: neurodc
+#  mem: 8G
+#  collect: "yes"
