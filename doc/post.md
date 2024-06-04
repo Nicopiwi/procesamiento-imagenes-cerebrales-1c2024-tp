@@ -21,9 +21,10 @@ Para esta parte del trabajo realizamos la extracción de features para una únic
 
 ## Resultados
 ### Clasificacion de sujetos enfermos usando conectividad funcional
- Los resultados muestran valores de AUC-ROC para 5-fold nested cross validation para distintos modelos. 
+ Los resultados en la Figura 1 muestran valores de AUC-ROC para 5-fold nested cross validation para distintos modelos. 
 
 ![Resultados AUC FC](cv_fc.png "Title")
+<p style="display: block; font-size: 7;">Figura 1: Boxplot con los resultados de AUC para cada modelo probado utilizando Conectividad Funcional</p>
 
  Se obtuvieron valores mediocres de AUC-ROC en todos los modelos, por lo que la eleccion del modelo final fue levemente arbitraria: los cuatro modelos tienen performances similares en general, con alta variacion tambien (entre splits).
 
@@ -31,9 +32,10 @@ Para esta parte del trabajo realizamos la extracción de features para una únic
   Finalmente se obtuvo un AUC en el set de testeo de $0.574$ .
 
 ### Clasificacion de sujetos enfermos usando ALFF
-De manera similar, en el caso de la clasificacion de sujetos enfermos usando ALFF, conseguimos los siguientes resultados.
+De manera similar, en el caso de la clasificacion de sujetos enfermos usando ALFF, conseguimos los siguientes resultados, que se pueden observar en la figura 2.
 
 ![Resultados AUC ALFF](cv_alff.png "Title")
+<p style="display: block; font-size: 7;">Figura 2: Boxplot con los resultados de AUC para cada modelo probado utilizando ALFF</p>
 
 En este caso se obtuvieron valores levemente mejores en comparacion con los obtenidos usando FC. En este caso se descarto al Random Forest por presentar mayor variabilidad entre splits que los demas modelos.
 
