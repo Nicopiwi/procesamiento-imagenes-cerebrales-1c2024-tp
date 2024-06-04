@@ -4,9 +4,15 @@
 
 Detección de sujetos con desórdenes neuropsiquiátricos usando marcadores extraídos de fMRI en estado de reposo y Aprendizaje Automático
 
-## Integrantes 
+## Integrantes
 
-Pablo Groisman, Nicolás Yanovsky, Nicolás Rozenberg
+- Pablo Groisman [pablogroisman](https://github.com/pablogroisman)
+- Nicolás Yanovsky [nyanovsky](https://github.com/nyanovsky)
+- Nicolás Rozenberg [Nicopiwi](https://github.com/Nicopiwi)
+
+# Docente
+
+Federico Raimondo [fraimondo](https://github.com/fraimondo)
 
 ## Informes
 
