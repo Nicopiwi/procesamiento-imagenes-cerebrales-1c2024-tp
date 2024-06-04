@@ -44,7 +44,7 @@ A partir de acá tomaremos dos enfoques distintos para probar los modelos. En am
 Utilizando el enfoque de conectividad funcional, primero armamos la matriz de features poniendo en cada fila el vector conseguido producto de desenrollar la matriz triangular superior de conectividad funcional de cada sujeto. Al ser 100 regiones de interés, terminamos con una matriz de $N\times\frac{50^2}{2}$. 
 Teniendo en cuenta que $N << \frac{50^2}{2}$ y los problemas asociados que trae esto, decidimos usar PCA para reducir las dimensiones del problema.
 
-Probamos distintos clasificadores (Random Forest, LDA, SVM, XGBoost) y realizamos repeated (10 veces) Nested Cross Validation para estimar el error de generalización de la selección del modelo final con cross-validation en conjunto con grid search (5-fold, estratificado). Para SVM realizamos el proceso de selección de hiperparámetros para cada tipo de kernel (lineal, polinomial, rbf). A lo largo del proceso la métrica de evaluación usada siempre es el AUC-ROC. 
+Probamos distintos clasificadores (Random Forest, SVM) y realizamos repeated (10 veces) Nested Cross Validation para estimar el error de generalización de la selección del modelo final con cross-validation en conjunto con grid search (5-fold, estratificado). Para SVM realizamos el proceso de selección de hiperparámetros para cada tipo de kernel (lineal, sigmoide, rbf). A lo largo del proceso la métrica de evaluación usada siempre es el AUC-ROC. 
 
 El modelo final seleccionado será el que mayor AUC obtuvo, pero teniendo en cuenta la consistencia de los resultados del repeated nested cross-validation. 
 Finalmente reportamos su performance estimada en el set de testeo previamente separado.
