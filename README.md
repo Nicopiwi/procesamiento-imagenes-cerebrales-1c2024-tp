@@ -47,6 +47,14 @@ pip install -r requirements.txt
 
 Los pasos de instalación se pueden ver en https://github.com/ANTsX/ANTs?tab=readme-ov-file
 
+### Extracción de features
+
+En en directorio `./src`, correr
+
+```
+junifer run junifer_preproc.yaml
+junifer collect junifer_preproc.yaml
+```
 
 ### Visualizar exploración de modelos
 
