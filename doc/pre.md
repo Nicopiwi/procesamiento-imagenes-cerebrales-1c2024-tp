@@ -4,7 +4,15 @@
 --------------
 
 ## Integrantes
-Pablo Groisman, Nicolás Yanovsky, Nicolás Rozenberg
+
+- Pablo Groisman [pablogroisman](https://github.com/pablogroisman)
+- Nicolás Yanovsky [nyanovsky](https://github.com/nyanovsky)
+- Nicolás Rozenberg [Nicopiwi](https://github.com/Nicopiwi)
+
+# Docente
+
+Federico Raimondo [fraimondo](https://github.com/fraimondo)
+
 ## Introducción
 
 Los trastornos neuropsiquiátricos, como el Trastorno por Déficit de Atención e Hiperactividad (TDAH), el Trastorno Bipolar (TB) y la Esquizofrenia, representan una carga significativa para la salud pública en todo el mundo debido a su impacto en el funcionamiento cognitivo, emocional y social de los individuos afectados. Estos trastornos son complejos y multifacéticos, lo que dificulta su diagnóstico y tratamiento efectivo.
