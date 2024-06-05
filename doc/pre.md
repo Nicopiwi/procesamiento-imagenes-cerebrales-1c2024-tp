@@ -35,7 +35,7 @@ En primer lugar, separamos un 20% de los sujetos de manera equitativa que luego 
 
 En segundo lugar resulta necesario aclarar que utilizamos la herramienta Open Source Junifer[^7], una herramienta end-to-end para proyectos de aprendizaje automático aplicados a neuroimágenes, para la obtención y transformación de los datos, y luego aplicar modelos aprendizaje automático. A partir de las imágenes de fMRI preprocesadas provistas por el dataset, parcelamos el cerebro de acuerdo a Tian et al., 2020. [^8]
 
-A partir de acá tomaremos dos enfoques distintos para probar los modelos. En ambos casos haremos confound removal. Para el primero, calcularemos la conectividad funcional entre las regiones obteniendo así una matriz de 100*100. Para el segundo utilizaremos como features al ALFF de cada parcela.
+A partir de acá tomaremos dos enfoques distintos para probar los modelos. En ambos casos haremos confound removal. Para el primero, calcularemos la conectividad funcional entre las regiones obteniendo así una matriz de 50*50. Para el segundo utilizaremos como features al ALFF de cada parcela.
 
 
 
