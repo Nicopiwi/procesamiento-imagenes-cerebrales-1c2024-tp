@@ -12,7 +12,7 @@
 Federico Raimondo [fraimondo](https://github.com/fraimondo)
 
 #
-Para esta parte del trabajo, probamos los modelos explicados en la preentrega, tanto utilizando conectividad funcional con PCA reducido a 50 dimensiones, como ALFF en reposo. Para cada uno, realizamos nested cross validation con 5 folds, y los hiperparámetros que probamos son los siguientes:
+Para esta parte del trabajo, probamos los modelos explicados en la preentrega, tanto utilizando conectividad funcional con PCA reducido a 50 dimensiones, como ALFF en reposo. Para cada uno, utilizamos el mismo split estratificado de sujetos, utilizando una semilla aleatoria para asegurar reproducibilidad. Realizamos nested cross validation con 5 folds. Los hiperparámetros que probamos son los siguientes:
 
 Para los [clasificadores basados en SVMs](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC), con Kernel lineal, Radial Basis Function (RBF) y Sigmoide, probamos un espacio logarítmico de 10 opciones para el parámetro de regularización `C`, y el mismo espacio para el coeficiente gamma de los kernels RBF y Sigmoide. Para el [Random Forest](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html), probamos `{10,30,70,100,200}` como la cantidad de estimadores, y para la profundidad máxima, probamos con 5, 25, 50 niveles, y una cantidad ilimitada de niveles. 
 
@@ -26,10 +26,10 @@ Para esta parte del trabajo realizamos la extracción de features para una únic
 ![Resultados AUC FC](cv_fc.png "Title")
 <p style="display: block; font-size: 7;">Figura 1: Boxplot con los resultados de AUC para cada modelo probado utilizando Conectividad Funcional</p>
 
- Se obtuvieron valores mediocres de AUC-ROC en todos los modelos, por lo que la eleccion del modelo final fue levemente arbitraria: los cuatro modelos tienen performances similares en general, con alta variacion tambien (entre splits).
+ Se obtuvieron valores negativos de AUC-ROC en todos los modelos, por lo que la eleccion del modelo final fue levemente arbitraria: los cuatro modelos tienen performances similares en general, con alta variacion tambien (entre splits).
 
-  El modelo final elegido fue un Random Forest (debido a su mayor interpretabilidad) construido con 70 arboles de altura maxima 5. Seleccionamos sus hiperparametros realizando grid search sobre la grilla ya mencionada. \
-  Finalmente se obtuvo un AUC en el set de testeo de $0.574$ .
+  El modelo final elegido fue un SVM con kernel Sigmoide, puesto que es el que obtuvo scores más precisos. Seleccionamos sus hiperparametros realizando grid search sobre la grilla ya mencionada. \ Los mejores parámetros conseguidos fueron $C=0.32, \gamma = 1000$ 
+  Finalmente se obtuvo un AUC en el set de testeo de $0.576$.
 
 ### Clasificacion de sujetos enfermos usando ALFF
 De manera similar, en el caso de la clasificacion de sujetos enfermos usando ALFF, conseguimos los siguientes resultados, que se pueden observar en la figura 2.
@@ -37,10 +37,8 @@ De manera similar, en el caso de la clasificacion de sujetos enfermos usando ALF
 ![Resultados AUC ALFF](cv_alff.png "Title")
 <p style="display: block; font-size: 7;">Figura 2: Boxplot con los resultados de AUC para cada modelo probado utilizando ALFF</p>
 
-En este caso se obtuvieron valores levemente mejores en comparacion con los obtenidos usando FC. En este caso se descarto al Random Forest por presentar mayor variabilidad entre splits que los demas modelos.
-
-En este caso se eligio como modelo final un SVM con kernel rbf (el de mayor media de AUC) de parametros $C=0.46, \gamma = 0.001$ seleccionados usando grid search en la grilla ya mencionada. \
-El AUC obtenido para el set de testeo fue de $0.532$ .
+En este caso se obtuvieron valores levemente mejores en comparacion con los obtenidos usando FC. En este caso se eligio como modelo final un Random Forest seleccionados usando grid search en la grilla ya mencionada para dicho modelo, debido a que obtuvo los mayores scores y con menor variabilidad. \
+El AUC obtenido para el set de testeo fue de $0.569$ .
 
 
 
