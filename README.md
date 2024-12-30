@@ -58,4 +58,4 @@ junifer collect junifer_preproc.yaml
 
 ### Visualizar exploración de modelos
 
-La exploración de los modelos se encuentra en el archivo `./src/notebook.ipynb`
+La exploración de los modelos se encuentra en el archivo `./src/notebook.ipynb`.
